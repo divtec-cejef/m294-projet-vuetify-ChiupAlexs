@@ -3,13 +3,17 @@
     <header>
       <div class="header-container">
         <div class="app-header">
-          <img alt="Logo du site" class="logo" src="" />
-          <h1>AMIIBO</h1>
+          <img alt="Logo du site" class="logo" src="@/assets/logo-amiibo.png" />
         </div>
       </div>
     </header>
     <main>
-      <h1 class="NosParfums">Bienvenu chez les Amiibo</h1>
+      <h1>Bienvenu chez les Amiibo</h1>
+      <div class="search-bar">
+        <v-btn class="loupe-recherche" icon="mdi-magnify"></v-btn>
+        <v-text-field placeholder="Rechercher un amiibo"></v-text-field>
+        <v-btn color="primary" variant="tonal">Rechercher</v-btn>
+      </div>
     </main>
   </v-app>
 </template>
@@ -25,6 +29,11 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   color: #000;
+}
+
+.logo {
+  width: 160px;
+  height: 56px;
 }
 
 header {
