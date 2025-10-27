@@ -1,34 +1,38 @@
-// Utilities
 import { defineStore } from 'pinia'
-import {id} from "vuetify/locale";
+import api from '@/plugins/axios.js';
 
 export const useAppStore = defineStore('app', {
   state: () => ({
-    //
-    isloading: false, // indique si une opération de chargement est en cours
-    error: null, // Stocke les message d'erreur
-    amiibo: [], // Tableau d'amiibo
+    isloading: false,
+    error: null,
+    amiibo: [],
   }),
 
   getters: {
-    //Declaration des getters
-    getamiibo: (state) => state.amiibo,
-    hasAmiibo: (state) => state.amiibo.length > 0,
-    getAmiiboByID: (state) => state.amiibo.filter((amiibo) => amiibo.id === id),
+    getamiibo: state => state.amiibo,
+    hasAmiibo: state => state.amiibo.length > 0,
+    getAmiiboByID: state => id => state.amiibo.filter(Amii => Amii.id === id),
   },
 
   actions: {
-    async fetchAmiibo() {
+    async fetchAmiibo () {
       try {
-        const response = api.get('')
-        return response.data
+        this.isloading = true
+        const response = await api.get('amiibo/')
+        this.amiibo = response.data.amiibo
+        // console.log(response.data)
+        console.log(this.amiibo)
+        this.isloading = false
+        return this.amiibo
       } catch (error) {
-        return error
+        this.error = error
+        this.isloading = false
+        return []
       }
-    }
-  }
-  // récupère donner au démarrage
-  async init {
-    this.amiibo = await this fetchAmiibo()
-  }
+    },
+
+    async init () {
+      await this.fetchAmiibo()
+    },
+  },
 })

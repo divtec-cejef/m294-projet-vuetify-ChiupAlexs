@@ -1,29 +1,39 @@
 <template>
   <v-app>
-    <header>
-      <div class="header-container">
-        <div class="app-header">
-          <img alt="Logo du site" class="logo" src="@/assets/logo-amiibo.png" />
+    <v-main>
+      <header>
+        <div class="header-container">
+          <div class="app-header">
+            <img alt="Logo du site" class="logo" src="@/assets/logo-amiibo.png">
+          </div>
         </div>
-      </div>
-    </header>
-    <main>
-      <h1>Bienvenu chez les Amiibo</h1>
-      <div class="search-bar">
-        <v-text-field placeholder="Rechercher un amiibo" />
-        <v-icon icon="mdi-magnify" />
-      </div>
-    </main>
+      </header>
+
+      <main>
+        <h1>Bienvenue chez les Amiibo</h1>
+        <div class="search-bar">
+          <v-text-field
+            density="compact"
+            hide-details
+            placeholder="Rechercher un amiibo"
+          />
+          <v-icon>mdi-magnify</v-icon>
+        </div>
+      </main>
+    </v-main>
   </v-app>
 </template>
 
 <script setup>
-import {onMounted} from 'vue'
-import { useAppStore } from '@/stores/app'
+  import { onMounted } from 'vue'
+  import { useAppStore } from '@/stores/app'
 
-const appStore = useAppStore() => {
-  console.log(store.amiibo)
-}
+  const appStore = useAppStore()
+
+  onMounted(() => {
+    appStore.init()
+    console.log(appStore.amiibo)
+  })
 </script>
 <style scoped lang="scss">
 
