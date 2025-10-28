@@ -6,11 +6,15 @@
           <div class="app-header">
             <img alt="Logo du site" class="logo" src="@/assets/logo-amiibo.png">
           </div>
+          <div class="navigation-container">
+            <v-icon class="nav-icon">mdi-home</v-icon>
+            <v-icon class="nav-icon">mdi-heart</v-icon>
+          </div>
         </div>
       </header>
 
       <main>
-        <h1>Bienvenue chez les Amiibo</h1>
+        <h1 class="titre">Bienvenue chez les Amiibo</h1>
         <div class="search-bar">
           <v-text-field
             density="compact"
@@ -18,7 +22,9 @@
             placeholder="Rechercher un amiibo"
           />
           <v-icon>mdi-magnify</v-icon>
+          <v-icon>mdi-filter</v-icon>
         </div>
+        <AmiiboList/>
       </main>
     </v-main>
   </v-app>
@@ -27,6 +33,7 @@
 <script setup>
   import { onMounted } from 'vue'
   import { useAppStore } from '@/stores/app'
+  import AmiiboList from '@/components/AmiiboList.vue'
 
   const appStore = useAppStore()
 
@@ -54,18 +61,38 @@ header {
   background: white;
   padding: 15px 30px;
   border-bottom: 1px solid #e0e0e0;
-  display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 30px;
 }
 
 .header-container {
   display: flex;
+  justify-content: space-between;
 }
 
 main {
   background: #f9f9fb;
   padding: 30px;
+}
+
+.nav-icon {
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.navigation-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon:hover {
+  transform: scale(1.1);
+}
+
+.titre {
+  text-align: center;
 }
 
 .search-bar {
