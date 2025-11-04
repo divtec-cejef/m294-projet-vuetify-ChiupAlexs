@@ -1,14 +1,27 @@
 <template>
   <div class="amiibo-container">
     <h1>Liste des Amiibo</h1>
-    <div v-if="store.hasAmiibo">
+
+    <!-- Loader pendant le chargement -->
+    <div v-if="loading" class="loader-container">
+      <div class="loader" />
+      <p>Chargement des Amiibo...</p>
+    </div>
+
+    <!-- Grille des Amiibo -->
+    <div v-else-if="filteredAmiibo.length > 0">
       <div class="amiibo-grille">
         <div
           v-for="amiibo in paginatedAmiibo"
           :key="amiibo.tail"
           class="amiibo-card"
         >
-          <img :alt="amiibo.name" :src="amiibo.image">
+          <img
+            :alt="amiibo.name"
+            :src="amiibo.image"
+            @error="imageLoaded"
+            @load="imageLoaded"
+          >
           <h2>{{ amiibo.name }}</h2>
           <p>{{ amiibo.gameSeries }}</p>
           <button>
@@ -16,55 +29,40 @@
           </button>
         </div>
       </div>
+    </div>
 
-      <div class="pagination">
-        <button
-          :disabled="currentPage === 1"
-          @click="currentPage--"
-        >
-        </button>
-
-        <button
-          v-for="page in totalPages"
-          :key="page"
-          :class="{ active: currentPage === page }"
-          @click="currentPage = page"
-        >
-          {{ page }}
-        </button>
-
-        <button
-          :disabled="currentPage === totalPages"
-          @click="currentPage++"
-        >
-        </button>
-      </div>
+    <div v-else class="no-results">
+      <p>Aucun Amiibo trouvé pour "{{ searchQuery }}"</p>
     </div>
   </div>
 </template>
 
 <script setup>
-  import { computed, onMounted, ref } from 'vue'
+  import { computed, onMounted, ref, watch } from 'vue'
   import { useAppStore } from '@/stores/app.js'
 
   const store = useAppStore()
 
-  // Pagination
-  const currentPage = ref(1)
-  // Nombre d'amiibo par page
-  const itemsPerPage = 48
+  // États
+  const loading = ref(true)
 
-  // Calcule les amiibo à afficher selon la page
-  const paginatedAmiibo = computed(() => {
-    const start = (currentPage.value - 1) * itemsPerPage
-    const end = start + itemsPerPage
-    return store.getamiibo.slice(start, end)
-  })
-
-  // Calcule le nombre total de pages
-  const totalPages = computed(() =>
-    Math.ceil(store.getamiibo.length / itemsPerPage),
+  // loader store
+  watch(
+    () => store.hasAmiibo,
+    val => {
+      if (val) setTimeout(() => (loading.value = false), 300)
+    },
   )
+
+  // chargement d’images
+  let imagesLoadedCount = 0
+  function imageLoaded () {
+    imagesLoadedCount++
+    const totalImages = paginatedAmiibo.value.length
+    if (imagesLoadedCount >= totalImages) {
+      loading.value = false
+    }
+  }
 
   onMounted(() => {
     store.init()
@@ -72,22 +70,49 @@
 </script>
 
 <style scoped>
+*{
+  color: black;
+}
+
 .amiibo-container {
   padding: 20px;
   text-align: center;
 }
 
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  padding: 70px;
+  gap: 10px;
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #007bff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .amiibo-grille {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.5rem;
+  gap: 25px;
   margin-top: 2rem;
 }
 
 .amiibo-card {
   background: #fff;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 10px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
 }
@@ -101,42 +126,6 @@
   border-radius: 10px;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
-  margin-top: 40px;
-}
-
-.pagination button {
-  border: none;
-  background: #ddd;
-  padding: 10px 15px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.pagination button.active {
-  background: #007bff;
-  color: white;
-}
-
-.pagination button:hover:not(:disabled) {
-  background: #007bff;
-  color: white;
-}
-
-.pagination button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.pagination favoris.active {
-  background: #007bff;
-  color: white;
-}
-
 .favoris {
   color: #000000;
   float: left;
@@ -144,7 +133,7 @@
 
 .favoris:hover {
   color: red;
-  transform: scale(1.2);
+  transform: scale(1.1);
+  transition: 0.5s;
 }
-
 </style>

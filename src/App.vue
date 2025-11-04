@@ -7,24 +7,15 @@
             <img alt="Logo du site" class="logo" src="@/assets/logo-amiibo.png">
           </div>
           <div class="navigation-container">
-            <v-icon class="nav-icon">mdi-home</v-icon>
-            <v-icon class="nav-icon">mdi-heart</v-icon>
+            <v-icon class="nav-icon-home">mdi-home</v-icon>
+            <v-icon class="nav-icon-heart">mdi-heart</v-icon>
           </div>
         </div>
       </header>
 
       <main>
         <h1 class="titre">Bienvenue chez les Amiibo</h1>
-        <div class="search-bar">
-          <v-text-field
-            density="compact"
-            hide-details
-            placeholder="Rechercher un amiibo"
-          />
-          <v-icon>mdi-magnify</v-icon>
-          <v-icon>mdi-filter</v-icon>
-        </div>
-        <AmiiboList/>
+        <AmiiboList />
       </main>
     </v-main>
   </v-app>
@@ -32,8 +23,9 @@
 
 <script setup>
   import { onMounted } from 'vue'
-  import { useAppStore } from '@/stores/app'
   import AmiiboList from '@/components/AmiiboList.vue'
+  import BarreRecherche from '@/components/BarreRecherche.vue'
+  import { useAppStore } from '@/stores/app'
 
   const appStore = useAppStore()
 
@@ -57,6 +49,12 @@
   height: 56px;
 }
 
+.logo:hover {
+  transform-style: preserve-3d;
+  transition: 1s;
+  transform: scale(1.1);
+}
+
 header {
   background: white;
   padding: 15px 30px;
@@ -76,9 +74,9 @@ main {
   padding: 30px;
 }
 
-.nav-icon {
+.nav-icon-heart, .nav-icon-home {
   cursor: pointer;
-  margin: 0 5px;
+  margin: 15px;
 }
 
 .navigation-container {
@@ -87,8 +85,16 @@ main {
   justify-content: center;
 }
 
-.nav-icon:hover {
-  transform: scale(1.1);
+.nav-icon-heart:hover {
+  transform-style: preserve-3d;
+  transition: 0.5s;
+  color: orange;
+}
+
+.nav-icon-home:hover {
+  transform-style: preserve-3d;
+  transition: 0.5s;
+  color: darkcyan;
 }
 
 .titre {
