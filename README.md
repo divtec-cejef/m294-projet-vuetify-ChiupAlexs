@@ -4,15 +4,30 @@
 ## 1. 🎨 Présentation du projet
 
 ### Concept
-- API choisie et pourquoi  
-- Public cible  
-- Objectifs de l’application  
-
+- API choisie et pourquoi
+  - J'ai choisi une API sur les différents Amiibo des jeux Nintendo, j'ai toujours apprécié cet univers et je veux pouvoir faire en sorte qu'on puisse consulter certains Amiibo afin de voir ce qu'ils donnerais dans certains jeux et quelles sont leur caractéristique.
+- Public cible
+  - Le publique cible serait les utilisateurs des produits Nintendo qui nécessite ou dispode de la fonctionnalité des Amiibo.
+- Objectifs de l’application
+  L'objectif de mon application est d'afficher tout les Amiibo de l'API afin que les utilisateurs puissent consulter leur descriptions et caractéristiques, pouvoir les enregistrer en favoris puis les rechercher
+  
 ### Fonctionnalités principales
 - Affichage d’une liste d’éléments (via API)
 - Recherche / Tri / Filtres
+  - il est possible de les filtrer par
+    - Ordre alphabétique
+    - série de jeux
+    - jeux
+    - date de sorti par continant
 - Vue détail
+  - sur la vue en détail on pourra consulter les éléments suivant :
+    - description
+    - date de sorti
+    - le jeu
+    - les jeux dans lesquelles ont peut l'utiliser
+    - ce que l'amiibo fait dans les différents jeux
 - Fonctionnalité interactive (favoris, watchlist, paramètres…)
+  - L'intéraction qu'on pourra effectuer sera la mise en favoris de l'amiibo
 - Persistance locale (favoris ou préférences)
 
 ### Aperçu visuel
@@ -24,6 +39,10 @@ _(Capture d’écran de l’application)_
 ## 2. 📚 Parcours d'apprentissage
 
 ### Ressources utilisées
+Pour la réalisation de mon projet je me suis aidé des ressource suivantes :
+- support de cours JS et VueJS du module 294
+- stack overflow
+- ...
 #### Documentation & tutos
 - [Vue 3 Docs](https://vuejs.org/guide/introduction.html)
 - [Vuetify Docs](https://vuetifyjs.com/en/components/all/)
@@ -32,9 +51,9 @@ _(Capture d’écran de l’application)_
 - Autres ressources...
 
 #### Progression
-- Semaine 1 : ...
-- Semaine 2 : ...
-- Semaine 3 : ...
+- Semaine 1 : clonnage du répo GitHub, création de la page d'acueil avec un header qui comport différents éléments (logo, icons) et création d'une barre de recherche (non fonctionnelle)
+- Semaine 2 : affichage de l'api sur la page d'accueil, création du composant de la carte Amiibo, affichage des amiibo sur la page, rendu la barre de recherche fonctionnel, pagination
+- Semaine 3 : ajout de la fonctionnalité de filtrage
 - Semaine 4 : ...
 - ...
 
