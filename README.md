@@ -5,7 +5,7 @@
 
 ### Concept
 - API choisie et pourquoi
-  - J'ai choisi une API sur les différents Amiibo des jeux Nintendo, j'ai toujours apprécié cet univers et je veux pouvoir faire en sorte qu'on puisse consulter certains Amiibo afin de voir ce qu'ils donnerais dans certains jeux et quelles sont leur caractéristique.
+  - J'ai choisi une API sur les différents Amiibo des jeux Nintendo, j'ai toujours apprécié cet univers et je veux pouvoir faire en sorte qu'on puisse consulter certains Amiibo afin de voir ce qu'ils donnerais dans certains jeux et quelles sont leur caractéristique puis dans quel jeu ils seraient compatible.
 - Public cible
   - Le publique cible serait les utilisateurs des produits Nintendo qui nécessite ou dispode de la fonctionnalité des Amiibo.
 - Objectifs de l’application
@@ -164,13 +164,15 @@ Outils utiles : Figma / Draw.io / ...
 
 ### Ce que j’ai appris
 - Compétences techniques acquises  
-- Découvertes surprenantes  
+- Découvertes surprenantes
+  - VueJS est très pratique surtout pour les icons car on a pas besoin d'aller chercher des image sur internet on peut juste faire une balise <v-icon class="">mdi-exempleIcon</v-icon> et différents label (barre de recherche, pagination ...), la création de composant facilite beaucoup le code et un gain de temps   
 - Concepts difficiles maîtrisés  
 
 ### Difficultés rencontrées
 - Problèmes techniques et solutions trouvées  
 - Moments de blocage et dépassement  
-- Aide reçue et sources  
+- Aide reçue et sources
+  - pour l'affichage de l'API j'ai demandé à Monsieur Tirole de m'aider  
 
 ### Réussites et fiertés
 - Aspects du projet dont je suis fier  
@@ -185,7 +187,7 @@ Outils utiles : Figma / Draw.io / ...
 ---
 
 ## 7. 📚 Références & Sources
-- Documentation de l’API : [Nom de l’API](https://...)  
+- Documentation de l’API : [AmiiboAPI](https://amiiboapi.com/docs/)  
 - Tutos clés utilisés : ...  
 - Usage de l’IA : voir section ci-dessus  
 - Autres ressources utiles : ...
