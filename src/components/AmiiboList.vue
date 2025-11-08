@@ -2,13 +2,11 @@
   <div class="amiibo-container">
     <h1>Liste des Amiibo</h1>
 
-    <!-- Loader pendant le chargement -->
     <div v-if="loading" class="loader-container">
       <div class="loader" />
       <p>Chargement des Amiibo...</p>
     </div>
 
-    <!-- Grille des Amiibo -->
     <div v-else-if="filteredAmiibo.length > 0">
       <div class="amiibo-grille">
         <div
@@ -29,6 +27,13 @@
           </button>
         </div>
       </div>
+
+      <!-- Pagination branchée -->
+      <Pagination
+        v-model:page="currentPage"
+        :items-per-page="itemsPerPage"
+        :total-items="filteredAmiibo.length"
+      />
     </div>
 
     <div v-else class="no-results">
@@ -38,30 +43,40 @@
 </template>
 
 <script setup>
+  import { storeToRefs } from 'pinia'
   import { computed, onMounted, ref, watch } from 'vue'
   import { useAppStore } from '@/stores/app.js'
+  import Pagination from './Pagination.vue'
 
   const store = useAppStore()
+  const { searchQuery, filteredAmiibo, hasAmiibo } = storeToRefs(store)
 
-  // États
   const loading = ref(true)
+  const currentPage = ref(1)
+  const itemsPerPage = 48
 
-  // loader store
-  watch(
-    () => store.hasAmiibo,
-    val => {
-      if (val) setTimeout(() => (loading.value = false), 300)
-    },
-  )
+  // Amiibo paginés
+  const paginatedAmiibo = computed(() => {
+    const start = (currentPage.value - 1) * itemsPerPage
+    const end = start + itemsPerPage
+    return filteredAmiibo.value.slice(start, end)
+  })
 
-  // chargement d’images
+  // Revenir à la page 1 quand on fait une recherche
+  watch(filteredAmiibo, () => {
+    currentPage.value = 1
+  })
+
+  // Loader
+  watch(hasAmiibo, val => {
+    if (val) setTimeout(() => (loading.value = false), 300)
+  })
+
   let imagesLoadedCount = 0
   function imageLoaded () {
     imagesLoadedCount++
-    const totalImages = paginatedAmiibo.value.length
-    if (imagesLoadedCount >= totalImages) {
-      loading.value = false
-    }
+    const totalImages = filteredAmiibo.value.length
+    if (imagesLoadedCount >= totalImages) loading.value = false
   }
 
   onMounted(() => {

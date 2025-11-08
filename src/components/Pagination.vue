@@ -1,44 +1,43 @@
 <template>
-  <!-- Pagination -->
-  <div class="pagination">
-    <button :disabled="currentPage === 1" @click="currentPage--">◀</button>
+  <div class="pagination" v-if="totalPages > 1">
+    <button :disabled="page === 1" @click="updatePage(page - 1)">◀</button>
+
     <button
-      v-for="page in totalPages"
-      :key="page"
-      :class="{ active: currentPage === page }"
-      @click="currentPage = page"
+      v-for="p in totalPages"
+      :key="p"
+      :class="{ active: page === p }"
+      @click="updatePage(p)"
     >
-      {{ page }}
+      {{ p }}
     </button>
-    <button :disabled="currentPage === totalPages" @click="currentPage++">▶</button>
+
+    <button :disabled="page === totalPages" @click="updatePage(page + 1)">▶</button>
   </div>
 </template>
+
 <script setup>
+import { computed } from 'vue'
 
-  import { computed, ref, watch } from 'vue'
+const props = defineProps({
+  totalItems: { type: Number, required: true },
+  itemsPerPage: { type: Number, default: 48 },
+  page: { type: Number, default: 1 }
+})
 
-  const currentPage = ref(1)
-  const itemsPerPage = 48
+const emit = defineEmits(['update:page'])
 
-  // Pagination pour résultats filtrés
-  const paginatedAmiibo = computed(() => {
-    const start = (currentPage.value - 1) * itemsPerPage
-    const end = start + itemsPerPage
-    return filteredAmiibo.value.slice(start, end)
-  })
+const totalPages = computed(() =>
+  Math.ceil(props.totalItems / props.itemsPerPage)
+)
 
-  const totalPages = computed(() =>
-    Math.ceil(filteredAmiibo.value.length / itemsPerPage),
-  )
-
-  // Reset la pagination à 1 quand on recherche
-  watch(searchQuery, () => {
-    currentPage.value = 1
-  })
-
+function updatePage(newPage) {
+  if (newPage >= 1 && newPage <= totalPages.value) {
+    emit('update:page', newPage)
+  }
+}
 </script>
-<style scoped lang="scss">
 
+<style scoped>
 .pagination {
   display: flex;
   justify-content: center;

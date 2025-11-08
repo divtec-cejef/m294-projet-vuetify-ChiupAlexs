@@ -17,6 +17,7 @@
         <h1 class="titre">Bienvenue chez les Amiibo</h1>
         <BarreRecherche />
         <AmiiboList />
+        <Pagination />
       </main>
     </v-main>
   </v-app>

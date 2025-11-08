@@ -1,6 +1,5 @@
 <template>
   <div class="recherche-container">
-    <!-- Barre de recherche -->
     <div class="search-bar">
       <input
         v-model="searchQuery"
@@ -8,26 +7,19 @@
         type="text"
       >
     </div>
-
   </div>
 </template>
+
 <script setup>
-  import { computed, ref } from 'vue'
+  import { storeToRefs } from 'pinia'
+  import { useAppStore } from '@/stores/app'
 
-  const searchQuery = ref('')
-
-  // Filtrage
-  const filteredAmiibo = computed(() => {
-    const query = searchQuery.value.toLowerCase().trim()
-    if (!query) return store.getamiibo
-    return store.getamiibo.filter(a =>
-      a.name.toLowerCase().includes(query)
-      || a.gameSeries.toLowerCase().includes(query),
-    )
-  })
+  const store = useAppStore()
+  const { searchQuery } = storeToRefs(store)
 </script>
+
 <style scoped lang="scss">
-*{
+* {
   color: black;
 }
 
@@ -51,9 +43,4 @@
   border-color: #007bff;
 }
 
-.no-results {
-  margin-top: 40px;
-  color: #777;
-  font-size: 18px;
-}
 </style>
