@@ -15,6 +15,7 @@
 
       <main>
         <h1 class="titre">Bienvenue chez les Amiibo</h1>
+        <BarreRecherche />
         <AmiiboList />
       </main>
     </v-main>
@@ -25,6 +26,7 @@
   import { onMounted } from 'vue'
   import AmiiboList from '@/components/AmiiboList.vue'
   import BarreRecherche from '@/components/BarreRecherche.vue'
+  import Pagination from '@/components/Pagination.vue'
   import { useAppStore } from '@/stores/app'
 
   const appStore = useAppStore()

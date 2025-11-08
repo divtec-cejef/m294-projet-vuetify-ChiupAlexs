@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import api from '@/plugins/axios.js';
+import api from '@/plugins/axios.js'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
@@ -30,9 +30,30 @@ export const useAppStore = defineStore('app', {
         return []
       }
     },
-
+    // Appel au fishier
+    async fetchAmiiboJSON () {
+      this.error = null
+      try {
+        const response = await fetch('src/data/Amiibo.json')
+        const data = await response.json()
+        let AmiiboArray = []
+        if (Array.isArray(data)) {
+          AmiiboArray = data
+        } else if (data && Array.isArray(data.results)) {
+          AmiiboArray = data.results
+        } else {
+          AmiiboArray = data
+        }
+        this.Amiibo = AmiiboArray
+        console.log('Amiibo chargés depuis le JSON :', this.Amiibo)
+      } catch (error) {
+        this.error = error
+        console.log('Erreur fetchAmiiboJSON :', error)
+      }
+    },
     async init () {
       await this.fetchAmiibo()
+      await this.fetchAmiiboJSON()
     },
   },
 })

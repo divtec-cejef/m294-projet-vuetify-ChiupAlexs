@@ -27,6 +27,10 @@
   })
 </script>
 <style scoped lang="scss">
+*{
+  color: black;
+}
+
 .search-bar {
   display: flex;
   justify-content: center;

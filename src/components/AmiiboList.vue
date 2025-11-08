@@ -122,6 +122,7 @@
 }
 
 .amiibo-card img {
+  max-width: 50%;
   width: 100%;
   border-radius: 10px;
 }
