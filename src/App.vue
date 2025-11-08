@@ -7,38 +7,28 @@
             <img alt="Logo du site" class="logo" src="@/assets/logo-amiibo.png">
           </div>
           <div class="navigation-container">
-            <v-icon class="nav-icon-home">mdi-home</v-icon>
+            <!-- Icône pour aller à la page d'accueil -->
+            <RouterLink to="/">
+              <v-icon class="nav-icon-home">mdi-home</v-icon>
+            </RouterLink>
+
+            <!-- Icône pour les favoris (à venir) -->
             <v-icon class="nav-icon-heart">mdi-heart</v-icon>
           </div>
         </div>
       </header>
 
-      <main>
-        <h1 class="titre">Bienvenue chez les Amiibo</h1>
-        <BarreRecherche />
-        <AmiiboList />
-        <Pagination />
-      </main>
+      <!-- ICI, le routeur affichera la bonne page -->
+      <RouterView />
     </v-main>
   </v-app>
 </template>
 
 <script setup>
-  import { onMounted } from 'vue'
-  import AmiiboList from '@/components/AmiiboList.vue'
-  import BarreRecherche from '@/components/BarreRecherche.vue'
-  import Pagination from '@/components/Pagination.vue'
-  import { useAppStore } from '@/stores/app'
-
-  const appStore = useAppStore()
-
-  onMounted(() => {
-    appStore.init()
-    console.log(appStore.amiibo)
-  })
+import { RouterView, RouterLink } from 'vue-router'
 </script>
-<style scoped lang="scss">
 
+<style scoped lang="scss">
 * {
   margin: 0;
   padding: 0;
@@ -47,6 +37,13 @@
   color: #000;
 }
 
+v-main {
+  background: #f9f9fb;
+  padding: 30px;
+  min-height: 100vh;
+}
+
+/* --- reste inchangé --- */
 .logo {
   width: 160px;
   height: 56px;
@@ -72,11 +69,6 @@ header {
   justify-content: space-between;
 }
 
-main {
-  background: #f9f9fb;
-  padding: 30px;
-}
-
 .nav-icon-heart, .nav-icon-home {
   cursor: pointer;
   margin: 15px;
@@ -89,34 +81,12 @@ main {
 }
 
 .nav-icon-heart:hover {
-  transform-style: preserve-3d;
   transition: 0.5s;
   color: orange;
 }
 
 .nav-icon-home:hover {
-  transform-style: preserve-3d;
   transition: 0.5s;
   color: darkcyan;
 }
-
-.titre {
-  text-align: center;
-}
-
-.search-bar {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  width: 100%;
-  max-width: 500px;
-}
-
-v-text-field {
-  margin-right: 10px;
-  border-radius: 20px;
-  border: 1px solid #e0e0e0;
-  padding: 10px;
-}
-
 </style>

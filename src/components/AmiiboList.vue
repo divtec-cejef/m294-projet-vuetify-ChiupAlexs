@@ -2,11 +2,13 @@
   <div class="amiibo-container">
     <h1>Liste des Amiibo</h1>
 
+    <!-- Loader -->
     <div v-if="loading" class="loader-container">
       <div class="loader" />
       <p>Chargement des Amiibo...</p>
     </div>
 
+    <!-- Liste paginée -->
     <div v-else-if="filteredAmiibo.length > 0">
       <div class="amiibo-grille">
         <div
@@ -14,21 +16,31 @@
           :key="amiibo.tail"
           class="amiibo-card"
         >
-          <img
-            :alt="amiibo.name"
-            :src="amiibo.image"
-            @error="imageLoaded"
-            @load="imageLoaded"
-          >
-          <h2>{{ amiibo.name }}</h2>
-          <p>{{ amiibo.gameSeries }}</p>
-          <button>
-            <v-icon class="favoris">mdi-heart</v-icon>
+          <!-- lien vers la page détail pour chaque carte -->
+          <router-link class="amiibo-link" :to="`/amiibo/${amiibo.tail}`">
+            <img
+              :alt="amiibo.name"
+              :src="amiibo.image"
+              @error="imageLoaded"
+              @load="imageLoaded"
+            >
+            <h2>{{ amiibo.name }}</h2>
+            <p>{{ amiibo.gameSeries }}</p>
+          </router-link>
+
+          <button @click="toggleFav(amiibo.tail)">
+            <v-icon
+              class="favoris"
+              :style="{ color: isFavorite(amiibo.tail) ? 'red' : '#000' }"
+            >
+              mdi-heart
+            </v-icon>
           </button>
+
         </div>
       </div>
 
-      <!-- Pagination branchée -->
+      <!-- Pagination -->
       <Pagination
         v-model:page="currentPage"
         :items-per-page="itemsPerPage"
@@ -36,6 +48,7 @@
       />
     </div>
 
+    <!-- Aucun résultat -->
     <div v-else class="no-results">
       <p>Aucun Amiibo trouvé pour "{{ searchQuery }}"</p>
     </div>
@@ -62,7 +75,7 @@
     return filteredAmiibo.value.slice(start, end)
   })
 
-  // Revenir à la page 1 quand on fait une recherche
+  // Reset page quand on fait une recherche
   watch(filteredAmiibo, () => {
     currentPage.value = 1
   })
@@ -82,10 +95,19 @@
   onMounted(() => {
     store.init()
   })
+
+  function toggleFav(tail) {
+    store.toggleFavorite(tail)
+  }
+
+  function isFavorite(tail) {
+    return store.isFavorite(tail)
+  }
+
 </script>
 
 <style scoped>
-*{
+* {
   color: black;
 }
 
@@ -114,7 +136,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .amiibo-grille {
@@ -128,28 +152,50 @@
   background: #fff;
   border-radius: 12px;
   padding: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
+  position: relative;
 }
 
 .amiibo-card:hover {
   transform: scale(1.05);
 }
 
-.amiibo-card img {
+.amiibo-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.amiibo-link img {
   max-width: 50%;
-  width: 100%;
   border-radius: 10px;
 }
 
+.favoris-btn {
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
 .favoris {
-  color: #000000;
-  float: left;
+  color: #000;
 }
 
 .favoris:hover {
   color: red;
   transform: scale(1.1);
   transition: 0.5s;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 40px;
 }
 </style>

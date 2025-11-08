@@ -8,6 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AmiiboAffichage: typeof import('./src/components/AmiiboAffichage.vue')['default']
     AmiiboList: typeof import('./src/components/AmiiboList.vue')['default']
     AppFooter: typeof import('./src/components/AppFooter.vue')['default']
     BarreRecherche: typeof import('./src/components/BarreRecherche.vue')['default']

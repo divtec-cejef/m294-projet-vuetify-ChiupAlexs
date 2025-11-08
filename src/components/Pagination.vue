@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination" v-if="totalPages > 1">
+  <div v-if="totalPages > 1" class="pagination">
     <button :disabled="page === 1" @click="updatePage(page - 1)">◀</button>
 
     <button
@@ -16,25 +16,25 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+  import { computed } from 'vue'
 
-const props = defineProps({
-  totalItems: { type: Number, required: true },
-  itemsPerPage: { type: Number, default: 48 },
-  page: { type: Number, default: 1 }
-})
+  const props = defineProps({
+    totalItems: { type: Number, required: true },
+    itemsPerPage: { type: Number, default: 48 },
+    page: { type: Number, default: 1 },
+  })
 
-const emit = defineEmits(['update:page'])
+  const emit = defineEmits(['update:page'])
 
-const totalPages = computed(() =>
-  Math.ceil(props.totalItems / props.itemsPerPage)
-)
+  const totalPages = computed(() =>
+    Math.ceil(props.totalItems / props.itemsPerPage),
+  )
 
-function updatePage(newPage) {
-  if (newPage >= 1 && newPage <= totalPages.value) {
-    emit('update:page', newPage)
+  function updatePage (newPage) {
+    if (newPage >= 1 && newPage <= totalPages.value) {
+      emit('update:page', newPage)
+    }
   }
-}
 </script>
 
 <style scoped>
