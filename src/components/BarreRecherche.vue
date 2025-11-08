@@ -22,7 +22,7 @@
 
       <select v-model="filter">
         <option value="all">Tous</option>
-        <option value="favorites">Favoris ❤️</option>
+        <option value="favorites">Favoris</option>
       </select>
     </div>
   </div>

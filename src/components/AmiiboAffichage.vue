@@ -7,7 +7,7 @@
     <p><strong>Date EU :</strong> {{ amiibo.release?.eu || 'N/A' }}</p>
     <p><strong>Date US :</strong> {{ amiibo.release?.na || 'N/A' }}</p>
 
-    <button @click="$router.back()">⬅ Retour</button>
+    <button @click="$router.back()">Retour</button>
   </div>
 </template>
 

@@ -4,8 +4,9 @@
 
     <!-- Loader -->
     <div v-if="loading" class="loader-container">
-      <div class="loader" />
+      <img alt="mario chargement" class="chargement" src="../assets/load-mario.gif">
       <p>Chargement des Amiibo...</p>
+
     </div>
 
     <!-- Liste paginée -->
@@ -51,6 +52,7 @@
     <!-- Aucun résultat -->
     <div v-else class="no-results">
       <p>Aucun Amiibo trouvé pour "{{ searchQuery }}"</p>
+      <img alt="sad mario" class="aucun-rsultat" src="@/assets/mario-sad.gif">
     </div>
   </div>
 </template>
@@ -96,11 +98,11 @@
     store.init()
   })
 
-  function toggleFav(tail) {
+  function toggleFav (tail) {
     store.toggleFavorite(tail)
   }
 
-  function isFavorite(tail) {
+  function isFavorite (tail) {
     return store.isFavorite(tail)
   }
 
@@ -121,18 +123,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50%;
-  padding: 70px;
   gap: 10px;
 }
 
-.loader {
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #007bff;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
+.chargement {
+  width: 5%;
 }
 
 @keyframes spin {
@@ -198,4 +193,11 @@
   gap: 5px;
   margin-top: 40px;
 }
+
+.aucun-rsultat {
+  width: 100%;
+  max-width: 80px;
+  margin: 30px;
+}
+
 </style>

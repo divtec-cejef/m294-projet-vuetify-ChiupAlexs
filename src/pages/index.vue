@@ -14,6 +14,10 @@
 </script>
 
 <style scoped lang="scss">
+* {
+  color: black;
+}
+
 .home-container {
   text-align: center;
 }
