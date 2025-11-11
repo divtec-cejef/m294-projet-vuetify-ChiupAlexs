@@ -211,12 +211,14 @@ Outils utiles : Figma / Draw.io / ...
 - Ce que j’ajouterais avec plus de temps :
   - Afficher les jeux compatibles avec chaque Amiibo
   - Montrer les objets débloqués par les Amiibo dans les jeux
-  - Trier par items qui peut être recupérer par jeu 
+  - Trier par items qui peut être recupérer par jeu
+  - Réduction de la pagination
+  - Footer fixe
+  - Message d'erreur après un long chargement pour l'affichage des amiibo
+  - Amélioration du message d'erreur si il n'y a pas de favoris
 - Fonctionnalités bonus envisagées :
   - Améliorer l’UI/UX
   - Fonctionnalité du retour à l'accueil en appuyant sur le logo "amiibo"
-- Compétences à approfondir
-  - 
 
 ---
 
