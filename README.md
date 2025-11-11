@@ -66,7 +66,7 @@ Option de trie qui s'ajoute quand on séléctionne "date de sortie"
 Pour la réalisation de mon projet je me suis aidé des ressource suivantes :
 - support de cours JS et VueJS du module 294
 - stack overflow
-- ...
+- 
 #### Documentation & tutos
 - [Vue 3 Docs](https://vuejs.org/guide/introduction.html)
 - [Vuetify Docs](https://vuetifyjs.com/en/components/all/)
@@ -77,33 +77,37 @@ Pour la réalisation de mon projet je me suis aidé des ressource suivantes :
 #### Progression
 - Semaine 1 : clonnage du répo GitHub, création de la page d'acueil avec un header qui comport différents éléments (logo, icons) et création d'une barre de recherche (non fonctionnelle)
 - Semaine 2 : affichage de l'api sur la page d'accueil, création du composant de la carte Amiibo, affichage des amiibo sur la page, rendu la barre de recherche fonctionnel, pagination
-- Semaine 3 : ajout de la fonctionnalité de filtrage
-- Semaine 4 : ...
-- ...
+- Semaine 3 : ajout de la fonctionnalité de filtrage, par favoris, par défaut, par série de jeu, par sortie (sortie par continant) -> USA, EU, AU, JO
+- Semaine 4 : création du composants de la carte détail des Amiibo avec la fonction retour à la page d'accueil et création d'un chargement
 
 ---
 
 ## 3. 🛠️ Outils et méthodologie
 
 ### Environnement de développement
-- **IDE** : VS Code / WebStorm / Autre
+- **IDE** : WebStorm
 - **Versioning** : Git + GitHub
 - **Dépendances principales** : Vue 3, Vuetify 3, Pinia, Axios/Fetch
 - **Gestion API Keys** : `.env` + `.env.example`
 
 ### Installation & Run
-- Cloner le repo :...
-- Installer :... 
-- Lancer :...
+- Cloner le repo : pour cloner le repo on fait git clone https://github.com/divtec-cejef/m294-projet-vuetify-ChiupAlexs.git
+- Installer :
+  -  les dépendances : npm install
+- Lancer : lancer le site : npm run dev -->
+      VITE v6.3.6  ready in 1103 ms
+    ➜  Local:   http://localhost:3000/
+    ➜  Network: use --host to expose
+    ➜  press h + enter to show help
 - Variables d’environnement : copier `.env.example` → `.env` et compléter les clés nécessaires  
 
 ### Méthodologie
 - Découpage en composants réutilisables
+  - barre de recherche, pagination, carte amiibo, carte détails, footer
 - Props & Emits clairs
 - Store global avec Pinia
 - Commits réguliers et explicites
 - Tests manuels (UI, persistance, erreurs API)
-- ...
 
 ### Choix techniques
 - API sélectionnée :  
@@ -156,7 +160,7 @@ Outils utiles : Figma / Draw.io / ...
 **⚠️ TRANSPARENCE OBLIGATOIRE** : Si vous utilisez une IA, vous DEVEZ :
 
 ### IA utilisée
-- **Nom** : ChatGPT / Claude / GitHub Copilot / Autre  
+- **Nom** : ChatGPT
 - **Version** : _(ex. GPT-4)_  
 - **Contexte** : Aide ponctuelle / Génération de code / Debugging  
 
@@ -173,15 +177,16 @@ Outils utiles : Figma / Draw.io / ...
 - Dire comment il a été adapté au projet  
 
 ### Parties codées manuellement
-- Composants principaux : X% personnel  
-- Store & persistance : X% personnel  
-- Routing & navigation : X% personnel  
+- Composants principaux : 80% personnel  
+- Store & persistance : 50% personnel  
+- Routing & navigation : 30% personnel  
 - Tests & validation : 100% personnel  
 
 ### Apprentissage personnel
-- Ce que j’ai appris grâce à l’IA  
-- Comment elle m’a aidé à progresser  
-
+- Ce que j’ai appris grâce à l’IA
+  - la fonctionnalité du routeur  
+- Comment elle m’a aidé à progresser
+  - j'ai essayé de créer un routeur pour la navigation puis je me suis aidé de l'IA pour comprendre correctement avec des exemples.
 ---
 
 ## 6. 🎯 Bilan personnel
@@ -190,28 +195,37 @@ Outils utiles : Figma / Draw.io / ...
 - Compétences techniques acquises  
 - Découvertes surprenantes
   - VueJS est très pratique surtout pour les icons car on a pas besoin d'aller chercher des image sur internet on peut juste faire une balise <v-icon class="">mdi-exempleIcon</v-icon> et différents label (barre de recherche, pagination ...), la création de composant facilite beaucoup le code et un gain de temps   
-- Concepts difficiles maîtrisés  
+- Concepts difficiles maîtrisés
+  -   
 
 ### Difficultés rencontrées
-- Problèmes techniques et solutions trouvées  
-- Moments de blocage et dépassement  
+- Problèmes techniques et solutions trouvées
+  - Mes amiibo s'affichait en double à cause de mon fichier JSON de secours qui me servira si mon API n'est plus disponible, qui écrasait les données de l'API.  
+- Moments de blocage et dépassement
+  - La gestion des trie par continant  
 - Aide reçue et sources
   - pour l'affichage de l'API j'ai demandé à Monsieur Tirole de m'aider  
 
 ### Réussites et fiertés
-- Aspects du projet dont je suis fier  
-- Progrès constatés depuis le début  
-- Envies de développement futur  
+- Aspects du projet dont je suis fier
+  - l'utilisation de l'API dans mon projet
+  - les favoris qui reste mémoré même quand on rafraichit la page  
+- Progrès constatés depuis le début
+  - 
 
 ### Améliorations possibles
-- Ce que j’ajouterais avec plus de temps  
-- Fonctionnalités bonus envisagées  
-- Compétences à approfondir  
+- Ce que j’ajouterais avec plus de temps :
+  - Le faite de voir dans quel jeu on peut utiliser les différents Amiibo
+  - Ce que les Amiibo donnerais dans les différents jeux
+  - Trier par items qui peut être recupérer par jeu 
+- Fonctionnalités bonus envisagées :
+  - correction de l'UI/UX
+  - Fonctionnalité du retour à l'accueil en appuyant sur le logo "amiibo"
+- Compétences à approfondir
+  - 
 
 ---
 
 ## 7. 📚 Références & Sources
 - Documentation de l’API : [AmiiboAPI](https://amiiboapi.com/docs/)  
-- Tutos clés utilisés : ...  
 - Usage de l’IA : voir section ci-dessus  
-- Autres ressources utiles : ...
