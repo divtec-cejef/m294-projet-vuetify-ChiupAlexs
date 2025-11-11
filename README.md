@@ -81,7 +81,7 @@ Pour la réalisation de mon projet je me suis aidé des ressource suivantes :
 
 ---
 
-## 3. 🛠️ Outils et méthodologie
+## 3. Outils et méthodologie
 
 ### Environnement de développement
 - **IDE** : WebStorm
