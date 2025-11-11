@@ -1,31 +1,31 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/EBdR9AYf)
-# 🌐 Mon Projet Vue.js & Vuetify
+# Mon Projet Vue.js & Vuetify
 
-## 1. 🎨 Présentation du projet
+## 1. Présentation du projet
 
 ### Concept
 - API choisie et pourquoi
-  - J'ai choisi une API sur les différents Amiibo des jeux Nintendo, j'ai toujours apprécié cet univers et je veux pouvoir faire en sorte qu'on puisse consulter certains Amiibo afin de voir leurs détails comme nom, dates de sorties, jeux
+  - J’ai choisi une API sur les différents Amiibo des jeux Nintendo. J’ai toujours apprécié cet univers et je souhaite permettre aux utilisateurs de consulter certains Amiibo afin de voir leurs détails (nom, date de sortie, jeux)
 - Public cible
   - Le publique cible serait les utilisateurs des produits Nintendo qui nécessite ou dispode de la fonctionnalité des Amiibo.
 - Objectifs de l’application
-  L'objectif de mon application est d'afficher tout les Amiibo de l'API afin que les utilisateurs puissent consulter leur descriptions et caractéristiques, pouvoir les enregistrer en favoris puis les rechercher
+  L’objectif de mon application est d’afficher tous les Amiibo disponibles dans l’API, afin que les utilisateurs puissent consulter leurs descriptions et caractéristiques, les enregistrer en favoris, puis les rechercher facilement
   
 ### Fonctionnalités principales
 - Affichage d’une liste d’éléments (via API)
 - Recherche / Tri / Filtres
-  - il est possible de les filtrer par
+  - Possibilité de filtrer les Amiibo par :
     - défaut
     - série de jeux
     - date de sorti par continant
     - favoris
 - Vue détail
-  - sur la vue en détail on pourra consulter les éléments suivant :
-    - description
+  - Sur la vue détaillée, on peut consulter :
+    - Nom
     - date de sorti
     - le jeu
 - Fonctionnalité interactive (favoris, watchlist, paramètres…)
-  - L'intéraction qu'on pourra effectuer sera la mise en favoris de l'amiibo
+  - Mise en favoris des Amiibo
 - Persistance locale (favoris ou préférences)
 
 ### Aperçu visuel
@@ -60,25 +60,24 @@ Option de trie qui s'ajoute quand on séléctionne "date de sortie"
 
 ---
 
-## 2. 📚 Parcours d'apprentissage
+## 2. Parcours d'apprentissage
 
 ### Ressources utilisées
 Pour la réalisation de mon projet je me suis aidé des ressource suivantes :
 - support de cours JS et VueJS du module 294
 - stack overflow
-- 
+- IA
 #### Documentation & tutos
 - [Vue 3 Docs](https://vuejs.org/guide/introduction.html)
 - [Vuetify Docs](https://vuetifyjs.com/en/components/all/)
 - [Pinia Docs](https://pinia.vuejs.org/)
 - [Public APIs List](https://github.com/public-apis/public-apis)
-- Autres ressources...
 
 #### Progression
-- Semaine 1 : clonnage du répo GitHub, création de la page d'acueil avec un header qui comport différents éléments (logo, icons) et création d'une barre de recherche (non fonctionnelle)
-- Semaine 2 : affichage de l'api sur la page d'accueil, création du composant de la carte Amiibo, affichage des amiibo sur la page, rendu la barre de recherche fonctionnel, pagination
-- Semaine 3 : ajout de la fonctionnalité de filtrage, par favoris, par défaut, par série de jeu, par sortie (sortie par continant) -> USA, EU, AU, JO
-- Semaine 4 : création du composants de la carte détail des Amiibo avec la fonction retour à la page d'accueil et création d'un chargement
+- Semaine 1 : clonage du dépôt GitHub, création de la page d’accueil avec un header (logo, icônes) et une barre de recherche (non fonctionnelle)
+- Semaine 2 : affichage de l’API sur la page d’accueil, création du composant “carte Amiibo”, affichage des cartes, barre de recherche fonctionnelle, pagination
+- Semaine 3 : ajout de la fonctionnalité de filtrage (favoris, série de jeu, date de sortie par continent : USA, EU, AU, JP)
+- Semaine 4 : création du composant de la vue détail avec bouton retour à l’accueil et ajout d’un écran de chargement et ajout de l'icone dans l'onglet de navigation
 
 ---
 
@@ -91,7 +90,8 @@ Pour la réalisation de mon projet je me suis aidé des ressource suivantes :
 - **Gestion API Keys** : `.env` + `.env.example`
 
 ### Installation & Run
-- Cloner le repo : pour cloner le repo on fait git clone https://github.com/divtec-cejef/m294-projet-vuetify-ChiupAlexs.git
+- Cloner le repo :
+  - pour cloner le repo on fait git clone https://github.com/divtec-cejef/m294-projet-vuetify-ChiupAlexs.git
 - Installer :
   -  les dépendances : npm install
 - Lancer : lancer le site : npm run dev -->
@@ -103,17 +103,15 @@ Pour la réalisation de mon projet je me suis aidé des ressource suivantes :
 
 ### Méthodologie
 - Découpage en composants réutilisables
-  - barre de recherche, pagination, carte amiibo, carte détails, footer
+  - barre de recherche
+  - pagination
+  - carte amiibo
+  - carte détails
+  - footer
 - Props & Emits clairs
 - Store global avec Pinia
 - Commits réguliers et explicites
 - Tests manuels (UI, persistance, erreurs API)
-
-### Choix techniques
-- API sélectionnée :  
-- Justification du choix :  
-- Endpoints utilisés :  
-- Limites/quotas connus :  
 
 ### Architecture (Descriptif + schéma simple + data-flow)
 - `App.vue` : layout principal  
@@ -126,38 +124,34 @@ Outils utiles : Figma / Draw.io / ...
 
 ---
 
-## 4. 🧪 Tests et validation
+## 4. Tests et validation
 
 ### Tests techniques
-- ✅ Appels API fonctionnels  
-- ✅ Persistance vérifiée après refresh (localStorage)  
-- ✅ Navigation entre les vues OK  
-- ...
+- Appels API fonctionnels
+  - l'ajout d'un JSON avec les données de l'API a été crée si l'API n'est plus operationnelle  
+- Persistance vérifiée après refresh (localStorage)
+  - Les favoris reste même après le raffraichissement de la page
+- Navigation entre les vues opérationnelle
 
 ### Tests d’UX
 - Navigation intuitive  
 - Recherche/filtre/tri faciles à comprendre  
-- Feedback utilisateur (loading, erreurs, vide)  
-- ...
+- Feedback utilisateur (loading, erreurs, vide)
 
 ### Tests d’accessibilité
 - Contraste couleurs (Vuetify par défaut)  
 - Labels et placeholders corrects  
 - Navigation clavier possible  
 - Focus visible  
-- ...
 
 ### Tests d’erreurs & fallback
-- API down → **mock fallback** affiché (fichier local ou données simulées)  
-- Liste vide → message clair affiché  
-- Recherche sans résultat → affichage “Aucun élément trouvé”  
-- ...
+- API down → **mock fallback** affiché (fichier local ou données simulées)
+  - création d'un JSON avec les donnée de l'API  
+- Recherche sans résultat → affichage “Aucun Amiibo trouvé pour "gngngng"”  
 
 ---
 
-## 5. 🤖 Usage d’intelligence artificielle
-
-**⚠️ TRANSPARENCE OBLIGATOIRE** : Si vous utilisez une IA, vous DEVEZ :
+## 5. Usage d’intelligence artificielle
 
 ### IA utilisée
 - **Nom** : ChatGPT
@@ -166,11 +160,11 @@ Outils utiles : Figma / Draw.io / ...
 
 ### Utilisation détaillée
 **Domaines d'aide :**
-- Aide au code général : X%
-- Génération de snippets Vue/Vuetify : X%  
-- Aide à la structuration du projet : X%
-- Debugging : X%  
-- Recherche d’idées : X%  
+- Aide au code général : 50%
+- Génération de snippets Vue/Vuetify : 20%  
+- Aide à la structuration du projet : 20%
+- Debugging : 30%  
+- Recherche d’idées : 0%  
 
 **Compréhension et adaptation**
 - Expliquer ce que fait le code généré  
@@ -184,48 +178,47 @@ Outils utiles : Figma / Draw.io / ...
 
 ### Apprentissage personnel
 - Ce que j’ai appris grâce à l’IA
-  - la fonctionnalité du routeur  
+  - Compréhension du routeur Vue
 - Comment elle m’a aidé à progresser
   - j'ai essayé de créer un routeur pour la navigation puis je me suis aidé de l'IA pour comprendre correctement avec des exemples.
 ---
 
-## 6. 🎯 Bilan personnel
+## 6. Bilan personnel
 
 ### Ce que j’ai appris
-- Compétences techniques acquises  
+- Compétences techniques acquises
+  - tilisation du router, gestion du store Pinia, manipulation d’une API, utilisation de Vuetify.  
 - Découvertes surprenantes
   - VueJS est très pratique surtout pour les icons car on a pas besoin d'aller chercher des image sur internet on peut juste faire une balise <v-icon class="">mdi-exempleIcon</v-icon> et différents label (barre de recherche, pagination ...), la création de composant facilite beaucoup le code et un gain de temps   
 - Concepts difficiles maîtrisés
-  -   
 
 ### Difficultés rencontrées
 - Problèmes techniques et solutions trouvées
-  - Mes amiibo s'affichait en double à cause de mon fichier JSON de secours qui me servira si mon API n'est plus disponible, qui écrasait les données de l'API.  
+  - Affichage en double des Amiibo à cause du fichier JSON de secours écrasant les données de l’API
 - Moments de blocage et dépassement
-  - La gestion des trie par continant  
+  - Gestion du tri par continent
 - Aide reçue et sources
   - pour l'affichage de l'API j'ai demandé à Monsieur Tirole de m'aider  
 
 ### Réussites et fiertés
 - Aspects du projet dont je suis fier
   - l'utilisation de l'API dans mon projet
-  - les favoris qui reste mémoré même quand on rafraichit la page  
+  - Persistance des favoris dans le localStorage
 - Progrès constatés depuis le début
-  - 
+  - Application fluide et fonctionnelle
 
 ### Améliorations possibles
 - Ce que j’ajouterais avec plus de temps :
-  - Le faite de voir dans quel jeu on peut utiliser les différents Amiibo
-  - Ce que les Amiibo donnerais dans les différents jeux
+  - Afficher les jeux compatibles avec chaque Amiibo
+  - Montrer les objets débloqués par les Amiibo dans les jeux
   - Trier par items qui peut être recupérer par jeu 
 - Fonctionnalités bonus envisagées :
-  - correction de l'UI/UX
+  - Améliorer l’UI/UX
   - Fonctionnalité du retour à l'accueil en appuyant sur le logo "amiibo"
 - Compétences à approfondir
   - 
 
 ---
 
-## 7. 📚 Références & Sources
-- Documentation de l’API : [AmiiboAPI](https://amiiboapi.com/docs/)  
-- Usage de l’IA : voir section ci-dessus  
+## 7. Références & Sources
+- Documentation de l’API : [AmiiboAPI](https://amiiboapi.com/docs/)   
