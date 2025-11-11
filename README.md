@@ -5,7 +5,7 @@
 
 ### Concept
 - API choisie et pourquoi
-  - J'ai choisi une API sur les différents Amiibo des jeux Nintendo, j'ai toujours apprécié cet univers et je veux pouvoir faire en sorte qu'on puisse consulter certains Amiibo afin de voir ce qu'ils donnerais dans certains jeux et quelles sont leur caractéristique puis dans quel jeu ils seraient compatible.
+  - J'ai choisi une API sur les différents Amiibo des jeux Nintendo, j'ai toujours apprécié cet univers et je veux pouvoir faire en sorte qu'on puisse consulter certains Amiibo afin de voir leurs détails comme nom, dates de sorties, jeux
 - Public cible
   - Le publique cible serait les utilisateurs des produits Nintendo qui nécessite ou dispode de la fonctionnalité des Amiibo.
 - Objectifs de l’application
@@ -15,24 +15,41 @@
 - Affichage d’une liste d’éléments (via API)
 - Recherche / Tri / Filtres
   - il est possible de les filtrer par
-    - Ordre alphabétique
+    - défaut
     - série de jeux
-    - jeux
     - date de sorti par continant
+    - favoris
 - Vue détail
   - sur la vue en détail on pourra consulter les éléments suivant :
     - description
     - date de sorti
     - le jeu
-    - les jeux dans lesquelles ont peut l'utiliser
-    - ce que l'amiibo fait dans les différents jeux
 - Fonctionnalité interactive (favoris, watchlist, paramètres…)
   - L'intéraction qu'on pourra effectuer sera la mise en favoris de l'amiibo
 - Persistance locale (favoris ou préférences)
 
 ### Aperçu visuel
-_(Capture d’écran de l’application)_  
-`![Screenshot de l’application](img/screenshot.png)`
+_(Capture d’écran de l’application)_
+Accueil :
+<img width="1900" height="871" alt="page d&#39;accueil" src="https://github.com/user-attachments/assets/93ee45fe-40b0-4c4b-9296-9fc87096794c" />
+
+Chargement des Amiibo :
+<img width="1898" height="868" alt="chargement" src="https://github.com/user-attachments/assets/554a4b46-20b2-46e1-a04a-3501be6d123b" />
+
+Pas d'amiibo trouvé
+<img width="1901" height="873" alt="pas d&#39;amiibo" src="https://github.com/user-attachments/assets/a69fc71e-8d65-46ca-b48a-12175d2825ab" />
+
+Consulter un Amiibo
+<img width="1897" height="1026" alt="detail amiibo" src="https://github.com/user-attachments/assets/48f1af96-b893-4864-a392-51aba91df40e" />
+
+Trier les Amiibo
+<img width="788" height="263" alt="trie principal" src="https://github.com/user-attachments/assets/539c2d52-ab7d-4339-889a-46a454d73cb3" />
+
+Trier les amiibo par favoris
+<img width="1312" height="647" alt="trie favoris" src="https://github.com/user-attachments/assets/9c944fe4-2e14-40e4-9010-5cd286df765f" />
+
+Option de trie qui s'ajoute quand on séléctionne "date de sortie"
+<img width="1057" height="165" alt="option tie de plus" src="https://github.com/user-attachments/assets/02a05ea8-c54f-4902-bf7c-9a7f06ee8d5e" />
 
 ---
 
