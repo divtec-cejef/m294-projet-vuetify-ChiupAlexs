@@ -21,6 +21,8 @@
       </header>
 
       <!-- Zone dynamique, affichent les pages selon la route actuelle -->
+
+      <!-- routeur affichera la bonne page -->
       <RouterView />
     </v-main>
   </v-app>
