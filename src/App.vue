@@ -12,7 +12,7 @@
         </div>
       </header>
 
-      <!-- ici le routeur affichera la bonne page -->
+      <!-- routeur affichera la bonne page -->
       <RouterView />
     </v-main>
   </v-app>
