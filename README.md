@@ -48,7 +48,7 @@ Consulter un Amiibo
 
 
 Trier les Amiibo
-<img width="788" height="263" alt="trie principal" src="https://github.com/user-attachments/assets/539c2d52-ab7d-4339-889a-46a454d73cb3" />
+<img width="1000" height="275" alt="trie principal" src="https://github.com/user-attachments/assets/539c2d52-ab7d-4339-889a-46a454d73cb3" />
 
 
 Trier les amiibo par favoris
