@@ -1,18 +1,23 @@
 <template>
+  <!-- Conteneur principal de la barre de recherche -->
   <div class="recherche-container">
     <div class="search-bar">
+
+      <!-- Champ de recherche lié dynamiquement à la variable 'searchQuery' du store -->
       <input
         v-model="searchQuery"
         placeholder="Rechercher un Amiibo..."
         type="text"
       >
 
+      <!-- Menu déroulant pour le tri -->
       <select v-model="sortKey">
         <option value="">Trier par défaut</option>
         <option value="gameSeries">Série de jeu</option>
         <option value="release">Date de sortie</option>
       </select>
 
+      <!-- Si l’utilisateur choisit "Date de sortie", une seconde liste apparaît pour préciser la région -->
       <select v-if="sortKey === 'release'" v-model="sortRegion">
         <option value="na">Amérique du Nord</option>
         <option value="eu">Europe</option>
@@ -20,6 +25,7 @@
         <option value="au">Australie</option>
       </select>
 
+      <!-- Menu pour filtrer tous les Amiibo ou seulement les favoris -->
       <select v-model="filter">
         <option value="all">Tous</option>
         <option value="favorites">Favoris</option>
@@ -65,5 +71,9 @@
 
 .search-bar input {
   width: 300px;
+}
+
+select:hover {
+  border-color: #007bff;
 }
 </style>
